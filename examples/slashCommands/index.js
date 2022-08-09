@@ -1,12 +1,26 @@
 const { joinVoiceChannel, getVoiceConnection } = require("@discordjs/voice");
-const { Client, Intents, GuildMember } = require("discord.js");
-const { addSpeechEvent } = require("discord-speech-recognition");
-const { token } = require("./config.json");
+const { Client, GatewayIntentBits, GuildMember } = require("discord.js");
+const { addSpeechEvent, resolveSpeechWithWitai } = require("discord-speech-recognition");
+const {token, witaiKey} = require("./config.json");
 
 const client = new Client({
-  intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_VOICE_STATES],
+  intents: [
+    GatewayIntentBits.Guilds, 
+    GatewayIntentBits.GuildVoiceStates, 
+    GatewayIntentBits.GuildMembers,
+    GatewayIntentBits.GuildMessages, 
+    GatewayIntentBits.MessageContent
+  ],
 });
-addSpeechEvent(client);
+
+const options = {
+  lang: "en-US",
+  speechRecognition: resolveSpeechWithWitai,
+  key: config.witaiKey,
+  ignoreBots: true
+};
+
+addSpeechEvent(client, options);
 
 client.on("ready", () => {
   console.log("Ready!");
@@ -53,3 +67,4 @@ client.on("speech", (msg) => {
 });
 
 client.login(token);
+

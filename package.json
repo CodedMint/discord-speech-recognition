@@ -1,6 +1,6 @@
 {
   "name": "discord-speech-recognition",
-  "version": "2.1.1",
+  "version": "3.0.1",
   "description": "Extension for making discord speech recognition bots.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -35,8 +35,8 @@
   },
   "peerDependencies": {
     "@discordjs/opus": "^0.x",
-    "@discordjs/voice": "^0.6.0",
-    "discord.js": "13.x"
+    "@discordjs/voice": "^0.11.0",
+    "discord.js": "14.x"
   },
   "dependencies": {
     "axios": "^0.21.1",

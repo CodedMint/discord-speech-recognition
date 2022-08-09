@@ -12,7 +12,8 @@ export interface WitaiOptions {
  * @returns
  */
 const formatWitaiResponse = (text: string): Array<MessageResponse> => {
-  const fixedCommas = text.replaceAll("\n}\r\n", "},");
+  //fixed issue with replaceAll() not existing
+  const fixedCommas = text.replace(/\n}\r\n/g, "},");
   const wrappedInArray = `[${fixedCommas}]`;
   return JSON.parse(wrappedInArray);
 };
