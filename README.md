@@ -73,7 +73,7 @@ client.login("token");
 
 ```
 
-## Example usage for discord.js v14 using Wit.Ai
+## Example usage for discord.js v14 using Wit.ai
 
 ```javascript
 const { Client, GatewayIntentBits } = require("discord.js");
